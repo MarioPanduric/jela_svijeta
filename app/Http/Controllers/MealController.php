@@ -68,15 +68,36 @@ class MealController extends Controller
             $meals = $mealsQuery->paginate($perPage, ['*'], 'page', $page);
 
             $transformedMeals = $meals->map(function ($meal) {
-                $tag_id = $meal->tags;
+                $tag_id = json_decode($meal->tags, true);
                 $category_id = $meal->category;
-                $ingredients_id = $meal->ingredients;
+                $ingredients_id = json_decode($meal->ingredients, true);
 
-                $tag = Tag::find($tag_id);
+                
 
                 $category = Category::find($category_id);
 
-                $ingredients = Ingredient::find($ingredients_id);
+                
+                $ingredientsData = [];
+                foreach ($ingredients_id as $ingredient) {
+                    $ingredients = Ingredient::find($ingredient);
+                    $ingredientsData[] = [
+                        'id' => $ingredients->id,
+                        'title' => $ingredients->title,
+                        'slug' => $ingredients->slug,
+                    ];
+                }
+
+                $tagsData = [];
+                foreach ($tag_id as $tag) {
+                    $tags = Tag::find($tag);
+                    $tagsData[] = [
+                        'id' => $tags->id,
+                        'title' => $tags->title,
+                        'slug' => $tags->slug,
+                    ];
+                }
+
+                
                 return [
                     'id' => $meal->id,
                     'title' => $meal->title,
@@ -87,16 +108,8 @@ class MealController extends Controller
                         'title' => $category->title,
                         'slug' => $category->slug,
                     ] : null,
-                    'tags' => $tag ? [
-                        'id' => $tag->id,
-                        'title' => $tag->title,
-                        'slug' => $tag->slug,
-                    ] : null,
-                    'ingredients' => $ingredients ? [
-                        'id' => $ingredients->id,
-                        'title' => $ingredients->title,
-                        'slug' => $ingredients->slug,
-                    ] : null,
+                    'tags' => $tagsData,
+                    'ingredients' => $ingredientsData,
                 ];
             });
 
@@ -136,15 +149,35 @@ class MealController extends Controller
             $meals = $mealsQuery->paginate($perPage, ['*'], 'page', $page);
 
             $transformedMeals = $meals->map(function ($meal) {
-                $tag_id = $meal->tags;
+                $tag_id = json_decode($meal->tags, true);
                 $category_id = $meal->category;
-                $ingredients_id = $meal->ingredients;
+                $ingredients_id = json_decode($meal->ingredients, true);
 
                 $tag = TagLanguage::find($tag_id);
 
                 $category = CategoryLanguage::find($category_id);
 
                 $ingredients = IngredientLanguage::find($ingredients_id);
+
+                $ingredientsData = [];
+                foreach ($ingredients_id as $ingredient) {
+                    $ingredients = IngredientLanguage::find($ingredient);
+                    $ingredientsData[] = [
+                        'id' => $ingredients->id,
+                        'title' => $ingredients->title,
+                        'slug' => $ingredients->slug,
+                    ];
+                }
+
+                $tagsData = [];
+                foreach ($tag_id as $tag) {
+                    $tags = TagLanguage::find($tag);
+                    $tagsData[] = [
+                        'id' => $tags->id,
+                        'title' => $tags->title,
+                        'slug' => $tags->slug,
+                    ];
+                }
                 return [
                     'id' => $meal->id,
                     'title' => $meal->title,
@@ -155,16 +188,8 @@ class MealController extends Controller
                         'title' => $category->title,
                         'slug' => $category->slug,
                     ] : null,
-                    'tags' => $tag ? [
-                        'id' => $tag->id,
-                        'title' => $tag->title,
-                        'slug' => $tag->slug,
-                    ] : null,
-                    'ingredients' => $ingredients ? [
-                        'id' => $ingredients->id,
-                        'title' => $ingredients->title,
-                        'slug' => $ingredients->slug,
-                    ] : null,
+                    'tags' => $tagsData,
+                    'ingredients' => $ingredientsData,
                 ];
             });
 
@@ -183,7 +208,7 @@ class MealController extends Controller
                 ],
             ]);
         }
-        else {
+        elseif($lang == 'es') {
             $mealsQuery = MealLanguageSpanish::query();
 
             if ($tags) {
@@ -204,15 +229,36 @@ class MealController extends Controller
             $meals = $mealsQuery->paginate($perPage, ['*'], 'page', $page);
 
             $transformedMeals = $meals->map(function ($meal) {
-                $tag_id = $meal->tags;
+                $tag_id = json_decode($meal->tags, true);
                 $category_id = $meal->category;
-                $ingredients_id = $meal->ingredients;
+                $ingredients_id = json_decode($meal->ingredients, true);
 
                 $tag = TagLanguageSpanish::find($tag_id);
 
                 $category = CategoryLanguageSpanish::find($category_id);
 
                 $ingredients = IngredientLanguageSpanish::find($ingredients_id);
+
+                $ingredientsData = [];
+                foreach ($ingredients_id as $ingredient) {
+                    $ingredients = IngredientLanguageSpanish::find($ingredient);
+                    $ingredientsData[] = [
+                        'id' => $ingredients->id,
+                        'title' => $ingredients->title,
+                        'slug' => $ingredients->slug,
+                    ];
+                }
+
+                $tagsData = [];
+                foreach ($tag_id as $tag) {
+                    $tags = TagLanguageSpanish::find($tag);
+                    $tagsData[] = [
+                        'id' => $tags->id,
+                        'title' => $tags->title,
+                        'slug' => $tags->slug,
+                    ];
+                }
+
                 return [
                     'id' => $meal->id,
                     'title' => $meal->title,
@@ -223,16 +269,8 @@ class MealController extends Controller
                         'title' => $category->title,
                         'slug' => $category->slug,
                     ] : null,
-                    'tags' => $tag ? [
-                        'id' => $tag->id,
-                        'title' => $tag->title,
-                        'slug' => $tag->slug,
-                    ] : null,
-                    'ingredients' => $ingredients ? [
-                        'id' => $ingredients->id,
-                        'title' => $ingredients->title,
-                        'slug' => $ingredients->slug,
-                    ] : null,
+                    'tags' => $tagsData,
+                    'ingredients' => $ingredientsData,
                 ];
             });
 

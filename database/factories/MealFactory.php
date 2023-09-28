@@ -10,13 +10,32 @@ class MealFactory extends Factory
 
     public function definition()
     {
+        $size = rand(1, 9);
+        $ingredientIDs = [];
+        for ($i = 0; $i < $size; $i++) {
+            $random_id = $this->faker->numberBetween(1, 9);
+            if (!in_array($random_id, $ingredientIDs)) {
+                array_push($ingredientIDs, $random_id);
+            }
+            
+        }
+
+        $tags_size = rand(1, 9);
+        $tagIDs = [];
+        for ($i = 0; $i < $tags_size; $i++) {
+            $random_id = $this->faker->numberBetween(1, 9);
+            if (!in_array($random_id, $tagIDs)) {
+                array_push($tagIDs, $random_id);
+            }
+            
+        }
         return [
             'title' => $this->faker->word,
             'status' => $this->faker->randomElement(['created']),
             'description' => $this->faker->sentence,
-            'ingredients' => $this->faker->randomDigit,
+            'ingredients' =>  json_encode($ingredientIDs),
             'category' => $this->faker->randomDigit,
-            'tags' => $this->faker->randomDigit,
+            'tags' => json_encode($tagIDs),
         ];
     }
     public function configure()
