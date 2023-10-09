@@ -45,17 +45,4 @@ class MealFactory extends Factory
         });
     }
 
-    public function hr()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-            'title' => $this->faker->word,
-            'description' => $this->faker->sentence,
-            'status' => $this->faker->randomElement(['created']),
-            'ingredients' => $this->faker->randomDigit,
-            'categories' => $this->faker->randomDigit,
-            'tags' => $this->faker->randomDigit,
-            ];
-        });
-    }
 }

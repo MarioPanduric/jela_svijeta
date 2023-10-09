@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meals_language_spanish');
+        Schema::dropIfExists('mysql_meals');
     }
 };

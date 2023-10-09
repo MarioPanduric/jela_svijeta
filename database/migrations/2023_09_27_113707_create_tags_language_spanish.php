@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('mysql_tags')->create('tags_esp', function (Blueprint $table) {
+        Schema::connection('mysql_meals')->create('tags_esp', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();

@@ -10,7 +10,7 @@ class MealLanguage extends Model
     use HasFactory;
     protected $connection = 'mysql_meals';
     protected $table = 'meals_cro';
-    protected $fillable = [ 'title', 'description', 'status', 'ingredients', 'categories', 'tags'];
+    protected $fillable = [ 'title', 'description', 'status', 'ingredients', 'categories', 'tags', 'created_at', 'updated_at'];
 
     public function meal()
     {

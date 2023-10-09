@@ -11,6 +11,7 @@ class Ingredient extends Model
     
     protected $table = 'ingredients';
     protected $fillable = ['title', 'slug'];
+    protected $connection = 'mysql_meals';
 
     public function translations()
     {

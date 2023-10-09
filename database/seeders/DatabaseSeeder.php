@@ -29,16 +29,22 @@ class DatabaseSeeder extends Seeder
             $ingredient_id = $meal->ingredients;
             $category_id = $meal->category;
             $tag_id = $meal->tags;
+            $created_at = $meal->created_at;
+            $updated_at = $meal->updated_at;
 
-            $translatedTitle = self::translateToSpanish($meal->title);
-            $translatedDescription = self::translateToSpanish($meal->description);
+            
             MealLanguage::create([
                 'title' => $translatedTitle,
                 'description' => $translatedDescription,
                 'ingredients' => $ingredient_id,
                 'tags' => $tag_id,
                 'category' => $category_id,
+                'created_at' => $created_at,
+                'updated_at' => $updated_at,
             ]);
+
+            $translatedTitle = self::translateToSpanish($meal->title);
+            $translatedDescription = self::translateToSpanish($meal->description);
 
             MealLanguageSpanish::create([
                 'title' => $translatedTitle,
@@ -46,6 +52,8 @@ class DatabaseSeeder extends Seeder
                 'ingredients' => $ingredient_id,
                 'tags' => $tag_id,
                 'category' => $category_id,
+                'created_at' => $created_at,
+                'updated_at' => $updated_at,
             ]);
         }
         $categories = Category::factory()->count(10)->create();

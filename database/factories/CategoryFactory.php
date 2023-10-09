@@ -17,20 +17,6 @@ class CategoryFactory extends Factory
         ];
     }
 
-    public function configure()
-    {
-        return $this->afterMaking(function (Category $category) {
-        })->afterCreating(function (Category $category) {
-        });
-    }
+    
 
-    public function hr()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'title' => $this->faker->foodName,
-                'slug' => $this->faker->slug,
-            ];
-        });
-    }
 }

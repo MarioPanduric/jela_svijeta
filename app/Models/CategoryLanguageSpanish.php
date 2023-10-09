@@ -9,7 +9,7 @@ class CategoryLanguageSpanish extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql_categories';
+    protected $connection = 'mysql_meals';
 
     protected $table = 'categories_esp';
 

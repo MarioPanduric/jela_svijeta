@@ -9,7 +9,7 @@ class Tag extends Model
 {
     use HasFactory;
     
-    protected $connection = 'mysql_tags';
+    protected $connection = 'mysql_meals';
     protected $table = 'tags';
     protected $fillable = ['title', 'slug'];
 

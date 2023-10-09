@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('mysql_tags')->create('tags_cro', function (Blueprint $table) {
+        Schema::connection('mysql_meals')->create('tags_cro', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('mysql_tags')->dropIfExists('tags_cro');
+        Schema::connection('mysql_meals')->dropIfExists('tags_cro');
     }
 };

@@ -10,4 +10,5 @@ class IngredientLanguageSpanish extends Model
     use HasFactory;
     protected $table = 'ingredient_esp';
     protected $fillable = ['title', 'slug'];
+    protected $connection = 'mysql_meals';
 }

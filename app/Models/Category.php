@@ -10,13 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql_categories';
+    protected $connection = 'mysql_meals';
     protected $fillable = ['title', 'slug'];
-
-    public function meals()
-    {
-        return $this->belongsToMany(Meal::class, 'meal_categories');
-    }
-
     
 }

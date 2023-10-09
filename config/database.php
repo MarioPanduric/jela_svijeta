@@ -62,7 +62,6 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'mysql_meals' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -82,47 +81,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
-        'mysql_categories' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST_CATEGORIES', '127.0.0.1'),
-            'port' => env('DB_PORT_CATEGORIES', '3306'),
-            'database' => env('DB_DATABASE_CATEGORIES', 'forge'),
-            'username' => env('DB_USERNAME_CATEGORIES', 'forge'),
-            'password' => env('DB_PASSWORD_CATEGORIES', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
-
-        'mysql_tags' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST_TAGS', '127.0.0.1'),
-            'port' => env('DB_PORT_TAGS', '3306'),
-            'database' => env('DB_DATABASE_TAGS', 'forge'),
-            'username' => env('DB_USERNAME_TAGS', 'forge'),
-            'password' => env('DB_PASSWORD_TAGS', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
-
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
